@@ -33,11 +33,21 @@ async fn main() {
   let args = config::Args::parse();
 
   // set up our routes
-  let app = Router::new()
-    .route("/", get(|| async { "OK" }))
-    .nest_service("/sensors/raw", ServeDir::new(args.sensor_dir.clone()))
-    .route("/commands/raw/{*command}", post(run_command))
-    .with_state(args.clone());
+  let app = Router::new().route("/", get(|| async { "OK" }));
+
+  let app = if let Some(dir) = args.sensor_dir.clone() {
+    app.nest_service("/sensors/raw", ServeDir::new(dir))
+  } else {
+    app
+  };
+
+  let app = if args.command_dir.is_some() {
+    app.route("/commands/raw/{*command}", post(run_command))
+  } else {
+    app
+  };
+
+  let app = app.with_state(args.clone());
 
   // bind our network interface
   let listener = tokio::net::TcpListener::bind((args.interface, args.port))
@@ -58,7 +68,10 @@ async fn run_command(
   State(config): State<config::Args>,
   Path(command): Path<PathBuf>,
 ) -> Result<String> {
-  let cmd_path = config.command_dir.join(command);
+  // TODO: Parse our args into something that can't fail
+  // Safety: `command_dir` is checked for None before binding this route
+  let cmd_path = config.command_dir.unwrap().join(command);
+
   info!("Running command {:?}", cmd_path);
   let res = Command::new(cmd_path).output().await?.stdout;
   let res = str::from_utf8(res.as_slice()).unwrap();
