@@ -1,0 +1,13 @@
+# Restup
+
+Restup is a tool for quickly and simply deploying a ReST server using local files. The intention of this project is to allow [Home Assistant](https://www.home-assistant.io/) to easily integrate with a system through it's [Restful](https://www.home-assistant.io/integrations/rest/) integrations.
+
+## Usage
+
+On it's own the server only provides it's status on `/` by returning `OK` on a `GET`. A `sensors` directory can be specified with the `-s` flag, which will serve it's contents on `/sensors/raw/<file_path>`. A `commands` directory can also be specified, using the `-d` flag. This will allow running executables within the directory by `POST`ing to `/commands/raw/<file_path>`.
+
+## Example
+
+```bash
+restup -s ./sensors -d ./commands -p 3001 -i 127.0.0.1
+```
