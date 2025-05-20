@@ -22,8 +22,8 @@ async fn main() {
 
   let app = Router::new()
     .route("/", get(|| async { "OK" }))
-    .nest_service("/sensors", ServeDir::new(args.sensor_dir.clone()))
-    .route("/commands/{*command}", post(run_command))
+    .nest_service("/sensors/raw", ServeDir::new(args.sensor_dir.clone()))
+    .route("/commands/raw/{*command}", post(run_command))
     .with_state(args.clone());
 
   let listener = tokio::net::TcpListener::bind((args.interface, args.port))
