@@ -1,7 +1,11 @@
 [package]
 name = "restup"
+description = "A small ReST server for providing data and issuing commands, primarily for integrating with the Restful integrations in Home Assistant"
 version = "0.1.0"
 edition = "2024"
+authors = ["Linden Krouse <linden@krouse.tech>"]
+repository = "https://github.com/Lindenk/restup"
+license = "MIT"
 
 [dependencies]
 axum = "0.8.4"
