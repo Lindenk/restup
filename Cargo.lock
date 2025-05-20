@@ -207,19 +207,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b63caa9aa9397e2d9480a9b13673856c78d8ac123288526c37d7839f2a86990"
 
 [[package]]
-name = "emul-controller"
-version = "0.1.0"
-dependencies = [
- "axum",
- "clap",
- "log",
- "thiserror",
- "tokio",
- "tower",
- "tower-http",
-]
-
-[[package]]
 name = "fnv"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -535,6 +522,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "928fca9cf2aa042393a8325b9ead81d2f0df4cb12e1e24cef072922ccd99c5af"
 dependencies = [
  "bitflags",
+]
+
+[[package]]
+name = "restup"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "clap",
+ "log",
+ "thiserror",
+ "tokio",
+ "tower",
+ "tower-http",
 ]
 
 [[package]]
