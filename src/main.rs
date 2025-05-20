@@ -33,7 +33,7 @@ async fn main() {
   let args = config::Args::parse();
 
   // set up our routes
-  let app = Router::new().route("/", get(|| async { "OK" }));
+  let app = Router::new().route("/", get(|| async { "on" }));
 
   let app = if let Some(dir) = args.sensor_dir.clone() {
     app.nest_service("/sensors/raw", ServeDir::new(dir))

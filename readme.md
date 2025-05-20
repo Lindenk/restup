@@ -8,7 +8,7 @@ Restup is a tool for quickly and simply deploying a ReST server using local file
 
 ## Usage
 
-On it's own the server only provides it's status on `/` by returning `OK` on a `GET`. A `sensors` directory can be specified with the `-s` flag, which will serve it's contents on `/sensors/raw/<file_path>`. A `commands` directory can also be specified, using the `-d` flag. This will allow running executables within the directory by `POST`ing to `/commands/raw/<file_path>`.
+On it's own the server only provides it's status on `/` by returning `on` on a `GET`. A `sensors` directory can be specified with the `-s` flag, which will serve it's contents on `/sensors/raw/<file_path>`. A `commands` directory can also be specified, using the `-d` flag. This will allow running executables within the directory by `POST`ing to `/commands/raw/<file_path>`.
 
 ## Example
 
