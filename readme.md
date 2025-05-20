@@ -1,3 +1,5 @@
+[![Build](https://github.com/Lindenk/restup/actions/workflows/build.yml/badge.svg)](https://github.com/Lindenk/restup/actions/workflows/build.yml)
+
 # Restup
 
 Restup is a tool for quickly and simply deploying a ReST server using local files. The intention of this project is to allow [Home Assistant](https://www.home-assistant.io/) to easily integrate with a system through it's [Restful](https://www.home-assistant.io/integrations/rest/) integrations.
